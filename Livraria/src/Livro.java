@@ -1,47 +1,42 @@
 
-public class Livro {
+public abstract class Livro implements Produto {
 
 	private String nome;
 	private String descricao;
 	private double valor;
 	private String isbn;
 	private Autor autor;
-	
-	public Livro() {
-		
+
+	public Livro(Autor autor) {
+		this.autor = autor;
+    this.isbn = "000-00-00000-00-0";
 	}
-	
-	void mostrarDetalhes() {
+
+	public void mostrarDetalhes() {
 		System.out.println("Mostrando detalhes do livro ");
 		System.out.println("Nome: " + nome);
 		System.out.println("Descrição: " + descricao);
 		System.out.println("Valor: " + valor);
 		System.out.println("ISBN: " + isbn);
-		
+
 		if (temAutor()) {
 			autor.mostrarDetalhes();
 		}
-		
+
 		System.out.println("--");
 	}
-	
-	public boolean aplicaDescontoDe(double porcentagem) {
-		if (porcentagem > 0.3) {
-			return false;
-		}
-		valor -= valor * porcentagem;
-		return true;
-	}
-	
-	boolean temAutor() {
+
+	public abstract boolean aplicaDescontoDe(double porcentagem);
+
+	public boolean temAutor() {
 		return autor != null;
 	}
-	
-	void setValor(double valor) {
+
+	public void setValor(double valor) {
 		this.valor = valor;
 	}
-	
-	double getValor() {
+
+	public double getValor() {
 		return valor;
 	}
 
@@ -76,5 +71,5 @@ public class Livro {
 	public void setAutor(Autor autor) {
 		this.autor = autor;
 	}
-	
+
 }
