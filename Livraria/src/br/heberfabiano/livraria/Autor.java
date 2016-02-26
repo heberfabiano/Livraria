@@ -1,17 +1,28 @@
+package br.heberfabiano.livraria;
 
 public class Autor {
 
 	private String nome;
 	private String email;
 	private String cpf;
-	
-	void mostrarDetalhes() {
+
+	@Override
+	public String toString() {
 		System.out.println("Mostrando detalhes do autor ");
 		System.out.println("Nome: " + nome);
 		System.out.println("Email: " + email);
 		System.out.println("CPF: " + cpf);
+		
+		return "";
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Autor)) return false;
+		Autor outro = (Autor) obj;
+		return this.nome.equals(outro.nome);
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -35,5 +46,5 @@ public class Autor {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	
+
 }

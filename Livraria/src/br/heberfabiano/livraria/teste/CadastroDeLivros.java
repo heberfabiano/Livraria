@@ -1,5 +1,10 @@
+package br.heberfabiano.livraria.teste;
+import br.heberfabiano.livraria.Autor;
+import br.heberfabiano.livraria.produtos.Ebook;
+import br.heberfabiano.livraria.produtos.Livro;
+import br.heberfabiano.livraria.produtos.LivroFisico;
 
-//Pagina 110
+//Pagina 161
 
 public class CadastroDeLivros {
 
@@ -16,7 +21,7 @@ public class CadastroDeLivros {
 		livro.setValor(59.90);
 		livro.setIsbn("978-85-66250-46-6");
 
-		livro.mostrarDetalhes();
+		System.out.println(livro);
 
 		Autor outroAutor = new Autor();
 		outroAutor.setNome("Paulo Silveira");
@@ -29,8 +34,8 @@ public class CadastroDeLivros {
 		ebook.setValor(59.90);
 		ebook.setIsbn("978-85-66250-22-0");
 
-		ebook.mostrarDetalhes();
-
+		System.out.println(ebook);
+		
 	}
 
 }

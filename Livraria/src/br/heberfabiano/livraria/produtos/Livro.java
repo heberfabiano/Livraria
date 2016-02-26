@@ -1,3 +1,6 @@
+package br.heberfabiano.livraria.produtos;
+import br.heberfabiano.livraria.Autor;
+import br.heberfabiano.livraria.exception.AutorNuloException;
 
 public abstract class Livro implements Produto {
 
@@ -8,11 +11,19 @@ public abstract class Livro implements Produto {
 	private Autor autor;
 
 	public Livro(Autor autor) {
+		
+		if (autor == null) {
+			throw new AutorNuloException(
+					"O Autor do Livro não pode ser nulo");
+		}		
 		this.autor = autor;
-    this.isbn = "000-00-00000-00-0";
+		this.isbn = "000-00-00000-00-0";
+		
 	}
 
-	public void mostrarDetalhes() {
+	@Override
+	public String toString() {
+		
 		System.out.println("Mostrando detalhes do livro ");
 		System.out.println("Nome: " + nome);
 		System.out.println("Descrição: " + descricao);
@@ -20,13 +31,13 @@ public abstract class Livro implements Produto {
 		System.out.println("ISBN: " + isbn);
 
 		if (temAutor()) {
-			autor.mostrarDetalhes();
+			autor.toString();
 		}
 
 		System.out.println("--");
+		return "";
+		
 	}
-
-	public abstract boolean aplicaDescontoDe(double porcentagem);
 
 	public boolean temAutor() {
 		return autor != null;
